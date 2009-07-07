@@ -6,7 +6,7 @@ Pyccuracy syntax highlight contains highlight packages for some well-known edito
 Currently Implemented
 ---------------------
 
-* GEdit (Implemented by Rodrigo Lopes <rodvlopes@gmail.com>)
+* GEdit (Implemented by Rodrigo Lopes <rodvlopes@gmail.com> as explained in http://code.rodrigovitoria.com/Home/pyccuracy-syntax-highlight)
 
 Download the Source
 -------------------
