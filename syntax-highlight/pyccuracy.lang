@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Rodrigo V. Lopes <rodvlopes@gmail.com>
+         code.rodrigovitoria.com
+
+ This library is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+<language id="pyccuracy" _name="Pyccuracy" version="2.0" _section="Others">
+  <metadata>
+    <property name="mimetypes">text/x-pyccuracy</property>
+    <property name="globs">*.acc</property>
+  </metadata>
+
+  <styles>
+    <style id="comment" _name="Comment" map-to="def:comment"/>
+    <style id="string" _name="String" map-to="def:string"/>
+    <style id="keyword" _name="Keyword" map-to="def:keyword"/>
+    <style id="escape" _name="Escaped Character" map-to="def:special-char"/>
+    <style id="reserved" _name="Reserved Identifier" map-to="def:keyword"/>
+    <style id="function" _name="Function" map-to="def:function"/>
+    <style id="nil-value" _name="Nil Constant" map-to="def:special-constant"/>
+    <style id="boolean" _name="Boolean value" map-to="def:boolean"/>
+  </styles>
+
+  <definitions>
+
+    <context id="line-comment" style-ref="comment" end-at-line-end="true">
+      <start>#</start>
+      <include>
+	<context ref="def:in-comment"/>
+      </include>
+    </context>
+
+    <context id="cenario" style-ref="boolean" end-at-line-end="true">
+      <start>Cenário</start>
+      <include>
+	<context ref="def:in-comment"/>
+      </include>
+    </context>
+
+    <context id="keywords" style-ref="keyword">
+      <keyword>Dado que</keyword>
+      <keyword>Quando</keyword>
+      <keyword>Então</keyword>
+    </context>
+
+    <context id="functions" style-ref="function">
+      <keyword>Test</keyword>
+      <keyword>Eu</keyword>
+    </context>
+
+    <context id="pyccuracy">
+      <include>
+        <context ref="line-comment"/>
+        <context ref="keywords"/>
+	<context ref="functions"/>
+	<context ref="cenario"/>
+      </include>
+    </context>
+
+  </definitions>
+</language>
