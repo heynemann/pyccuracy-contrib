@@ -23,6 +23,7 @@
   <metadata>
     <property name="mimetypes">text/x-pyccuracy</property>
     <property name="globs">*.acc</property>
+    <property name="line-comment-start">#</property>
   </metadata>
 
   <styles>
@@ -41,15 +42,20 @@
     <context id="line-comment" style-ref="comment" end-at-line-end="true">
       <start>#</start>
       <include>
-	<context ref="def:in-comment"/>
+        <context ref="def:in-comment"/>
       </include>
     </context>
 
     <context id="cenario" style-ref="boolean" end-at-line-end="true">
       <start>Cenário</start>
       <include>
-	<context ref="def:in-comment"/>
+	    <context ref="def:in-comment"/>
       </include>
+    </context>
+    
+    <context id="string" style-ref="string" end-at-line-end="true">
+      <start>["']</start>
+      <end>\%{0@start}</end>
     </context>
 
     <context id="keywords" style-ref="keyword">
@@ -61,14 +67,20 @@
     <context id="functions" style-ref="function">
       <keyword>Test</keyword>
       <keyword>Eu</keyword>
+      <keyword>E eu</keyword>
+      <keyword>Como um</keyword>
+      <keyword>Para</keyword>
+      <keyword>Para que</keyword>
+      <keyword>Eu quero</keyword>
     </context>
 
     <context id="pyccuracy">
       <include>
         <context ref="line-comment"/>
         <context ref="keywords"/>
-	<context ref="functions"/>
-	<context ref="cenario"/>
+        <context ref="functions"/>
+        <context ref="cenario"/>
+        <context ref="string"/>
       </include>
     </context>
 
